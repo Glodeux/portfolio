@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Lugungu Entertainment" content="width=device-width, initial-scale=1.0">
+    <title>Lugungu Entertainment</title>
+    <link rel="stylesheet" href="{% static 'home/style.css' %}">
+</head>
+<body>
+    <div class="agenda_container"></div>
+        <div class="title">
+            <h1>Agenda</h1>
+        </div>
+        <div class="agenda_container">
+            <ul>
+                {% for date in speeldata %}
+                    <li class="agenda_item">
+                        {{date.date}} {{date.city}} {{date.venue_name}}
+                        {% if date.sold_out %}
+                            <p class="sold_out">Uitverkocht</p>
+                        {% else %}
+                            <a href="{{date.ticket_link}}" data-tickets>tickets</a>  
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
